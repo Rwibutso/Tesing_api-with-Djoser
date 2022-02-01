@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_docs',
     'rest_framework.authtoken',
     'djoser',
     'authapp'
@@ -65,6 +66,10 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSIONS_CLASSES': (
         'rest_framework.permissions.IsAuthantication',
     ),
+}
+
+REST_FRAMEWORK_DOCS = {
+    'HIDE_DOCS': os.environ.get('HIDE_DRFDOCS', False)
 }
 
 ROOT_URLCONF = 'api.urls'
